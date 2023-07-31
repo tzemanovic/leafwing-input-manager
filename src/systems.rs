@@ -84,6 +84,7 @@ pub fn update_action_state<A: Actionlike>(
     )>,
 ) {
     let gamepad_buttons = gamepad_buttons.into_inner();
+    dbg!(&gamepad_buttons);
     let gamepad_button_axes = gamepad_button_axes.into_inner();
     let gamepad_axes = gamepad_axes.into_inner();
     let gamepads = gamepads.into_inner();
