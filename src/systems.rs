@@ -84,7 +84,18 @@ pub fn update_action_state<A: Actionlike>(
     )>,
 ) {
     let gamepad_buttons = gamepad_buttons.into_inner();
-    dbg!(&gamepad_buttons);
+    let pressed = gamepad_buttons.get_pressed();
+    if !pressed.is_empty() {
+        dbg!(pressed.collect::<Vec<_>>());
+    }
+    let just_pressed = gamepad_buttons.get_just_pressed();
+    if !just_pressed.is_empty() {
+        dbg!(just_pressed.collect::<Vec<_>>());
+    }
+    let just_released = gamepad_buttons.get_just_released();
+    if !just_released.is_empty() {
+        dbg!(just_released.collect::<Vec<_>>());
+    }
     let gamepad_button_axes = gamepad_button_axes.into_inner();
     let gamepad_axes = gamepad_axes.into_inner();
     let gamepads = gamepads.into_inner();
