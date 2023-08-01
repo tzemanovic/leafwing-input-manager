@@ -98,6 +98,14 @@ pub fn update_action_state<A: Actionlike>(
     }
     let gamepad_button_axes = gamepad_button_axes.into_inner();
     let gamepad_axes = gamepad_axes.into_inner();
+    for device in gamepad_axes.devices() {
+        let pos = gamepad_axes.get(device);
+        if let Some(pos) = pos {
+            if pos != 0.0 {
+                dbg!(device.axis_type, pos);
+            }
+        }
+    }
     let gamepads = gamepads.into_inner();
     let keycodes = keycodes.map(|keycodes| keycodes.into_inner());
     let scan_codes = scan_codes.map(|scan_codes| scan_codes.into_inner());
